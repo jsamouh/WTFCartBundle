@@ -20,7 +20,7 @@
     "require": {
         "php": ">=5.3.3",	
 	"symfony/framework-bundle": "2.*",
-        "gedmo/doctrine-extensions": "dev-master"
+        "gedmo/doctrine-extensions": "2.3.*"
     },
     "autoload": {
         "psr-0": { "WTF\\CartBundle\\": "" }
