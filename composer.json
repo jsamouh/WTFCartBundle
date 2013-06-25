@@ -24,7 +24,7 @@
         "gedmo/doctrine-extensions": "dev-master"
     },
     "autoload": {
-        "psr-0": { "WTF\\\CartBundle\\": "" }
+        "psr-0": { "WTF\\CartBundle\\": "" }
     },
     "target-dir": "WTF/CartBundle",
     "extra": {
