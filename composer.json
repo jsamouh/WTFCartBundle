@@ -1,0 +1,35 @@
+{
+    "name": "jordscream/cart-bundle",
+    "type": "symfony-bundle",
+    "description": "WTF: Simple Cart Ecommerce Managment",
+    "keywords": ["shop", "ecommerce", "cart", "wtf"],
+    "homepage": "http://wtf.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artinal",
+            "email": "lifeextension25@gmail.com",
+            "homepage": "http://wtf.com"
+        },
+        {
+            "name": "WTF",
+            "homepage": "http://wtf.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+
+        "symfony/framework-bundle": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "WTF\\\CartBundle\\": "" }
+    },
+    "target-dir": "WTF/CartBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
