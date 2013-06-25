@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CartItem
  *
- * @ORM\Table()
+ * @ORM\Table(name="cart_item")
  * @ORM\Entity(repositoryClass="WTF\CartBundle\Entity\CartItemRepository")
  */
 class CartItem
