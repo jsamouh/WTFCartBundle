@@ -57,12 +57,12 @@ wtf_cart:
 
 ```
 
-IMPORTANT:
+### IMPORTANT:
 
 Define the method __toString in your entity Product
 
 
-USAGE:
+### USAGE:
 
 To display cart summary:
 
@@ -79,7 +79,7 @@ To add a cart add button in your product
 
 -- WTF Simple --
 
-TODO:
+### TODO:
 - page cart detail
 - clear cart button
 - unit test
