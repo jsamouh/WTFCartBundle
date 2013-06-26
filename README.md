@@ -10,6 +10,8 @@ Simple:
 
 This WTF Bundle is done for you!
 
+### Symfony 2.3.* Compatible
+
 ### Step 1: Download WTFCartBundle using composer
 
 Add WTFCartBundle in your composer.json:
