@@ -3,9 +3,9 @@ WTFCartBundle
 WTF ! Simple Cart Ecommerce Managment !
 
 Simple:
-- You have product, as entity with title, description, image and price
-- You want to add/delete product in a cart
-- You want to have a simple block which displays products cart
+- You have product/item in your project
+- You want to add and delete products in a ecommerce Cart
+- You want to have a simple block which displays products in a cart
 - You want cart entities managment
 
 This WTF Bundle is done for you!
@@ -55,6 +55,13 @@ Now add the config.yml the bundle configuration
 wtf_cart:
     item_class: App\ProductBundle\Entity\Product (put your Product entity)
 
+```
+
+Update the database and deploy assets web
+
+``` bash
+$ php app/console doctrine:schema:update --force --complete
+$ php app/console assets:install web
 ```
 
 ### IMPORTANT:
