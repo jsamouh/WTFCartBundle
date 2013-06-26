@@ -1,0 +1,6 @@
+<div class="wtf-cart-list-item">
+    {{ cartitem.quantity }} X {{ cartitem.item }}
+    <a class="js-btn-delete-item" href="#" action="{{ path('wtf_cart_delete_item', {'itemId': cartitem.item.id}) }}">
+        <img src="/bundles/wtfcart/images/bin.png"/>
+    </a>
+</div>

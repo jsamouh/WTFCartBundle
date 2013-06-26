@@ -2,6 +2,7 @@
 
 namespace WTF\CartBundle\DependencyInjection;
 
+use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -24,5 +25,19 @@ class WTFCartExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $classItem = $config['item_class'];
+        $collector = DoctrineCollector::getInstance();
+
+        $collector->addAssociation("WTF\CartBundle\Entity\CartItem", 'mapManyToOne', array(
+            'fieldName'     => 'item',
+            'targetEntity'  => $classItem,
+            'cascade'       => array(
+                'persist',
+            ),
+            'orphanRemoval' => false,
+        ));
+
+        $container->setParameter("wtf_cart.item_class", $classItem);
     }
 }

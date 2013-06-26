@@ -28,6 +28,16 @@ class CartItem
      */
     private $quantity;
 
+    /**
+     * Cart
+     *
+     * @var Cart
+     * @ORM\ManyToOne(targetEntity="Cart", cascade={"persist"})
+     */
+    protected $cart;
+
+    protected $item;
+
 
     /**
      * Get id
@@ -61,4 +71,31 @@ class CartItem
     {
         return $this->quantity;
     }
+
+    /**
+     * @param \WTF\CartBundle\Entity\Cart $cart
+     */
+    public function setCart(Cart $cart)
+    {
+        $this->cart = $cart;
+    }
+
+    /**
+     * @return \WTF\CartBundle\Entity\Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    public function setItem($item)
+    {
+        $this->item = $item;
+    }
+
+    public function getItem()
+    {
+        return $this->item;
+    }
+
 }

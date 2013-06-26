@@ -4,17 +4,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <parameters>
-        <parameter key="wtf_cart.example.class">WTF\CartBundle\Example</parameter>
-    </parameters>
 
     <services>
-        <service id="wtf_cart.example" class="%wtf_cart.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="wtf_cart.manager" class="WTF\CartBundle\Manager\CartManager">
+            <argument type="service" id="session" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%wtf_cart.item_class%</argument>
         </service>
     </services>
-    -->
+
 </container>

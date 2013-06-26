@@ -1,0 +1,25 @@
+{% block wtf_cart %}
+    You Have <span class="js-cart-quantity">{{ cart.getTotalQuantity() }}</span> in your Cart
+    <div class="wtf-cart-list">
+        {% include "WTFCartBundle:Cart:list_item_summary.html.twig" with {'cart': cart} %}
+    </div>
+{% endblock %}
+
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $(document).on('click', '.js-btn-add-item,.js-btn-delete-item', function()
+        {
+            $.getJSON($(this).attr('action'), function(data) {
+                $('.js-cart-quantity').html(data.totalQuantity);
+
+                $.get("{{ path('wtf_cart_list_item_summary') }}", function(data) {
+                    $('.wtf-cart-list').html(data);
+                });
+            });
+
+            return false;
+        });
+    });
+</script>

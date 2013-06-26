@@ -1,0 +1,3 @@
+{% for cartitem in cart.cartitems %}
+    {% include "WTFCartBundle:Cart:item_summary.html.twig" with {'cartitem': cartitem} %}
+{% endfor %}
