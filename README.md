@@ -68,13 +68,13 @@ To display cart summary:
 
 ``` twig
 {{ render(controller("WTFCartBundle:Cart:cart")) }}
-``
+```
 
 To add a cart add button in your product
 
 ``` twig
 {% include "WTFCartBundle:Cart:button.html.twig" with {'itemId' : product.id} %}
-``
+```
 
 
 -- WTF Simple --
