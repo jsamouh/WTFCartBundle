@@ -10,6 +10,7 @@ namespace WTF\CartBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\SecurityContext;
 use WTF\CartBundle\Entity\Cart;
 use WTF\CartBundle\Entity\CartItem;
 
@@ -18,18 +19,20 @@ class CartManager
     protected $session    = null;
     protected $em         = null;
     protected $class_item = null;
-
+    protected $securityContext = null;
 
     /**
      * @param Session $session
      * @param EntityManager $em
      * @param $classItem
+     * @param SecurityContext $securityContext
      */
-    public function __construct(Session $session, EntityManager $em, $classItem)
+    public function __construct(Session $session, EntityManager $em, $classItem, SecurityContext $securityContext)
     {
         $this->session = $session;
         $this->em = $em;
         $this->class_item = $classItem;
+        $this->securityContext = $securityContext;
     }
 
     /**
@@ -40,9 +43,14 @@ class CartManager
         if ($this->session->get('cart', null))
         {
             $cart = $this->getCartById($this->session->get('cart', null));
-            return $cart;
+            if ($cart)
+                return $cart;
         }
-        return new Cart();
+        $cart = new Cart();
+        if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY'))
+            $cart->setUser($this->securityContext->getToken()->getUser());
+
+        return $cart;
     }
 
 
@@ -101,10 +109,13 @@ class CartManager
         if ($this->session->get('cart', null))
         {
             $cart = $this->getCartById($this->session->get('cart', null));
-            return $cart;
+            if ($cart)
+                return $cart;
         }
 
         $cart = new Cart();
+        if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY'))
+            $cart->setUser($this->securityContext->getToken()->getUser());
         $this->em->persist($cart);
         $this->em->flush();
         $this->session->set('cart', $cart->getId());

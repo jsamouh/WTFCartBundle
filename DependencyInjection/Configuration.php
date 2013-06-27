@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->root('wtf_cart')
             ->children()
                 ->scalarNode('item_class')->isRequired()->end()
+                ->scalarNode('user_class')->isRequired()->end()
             ->end();
 
         return $treeBuilder;

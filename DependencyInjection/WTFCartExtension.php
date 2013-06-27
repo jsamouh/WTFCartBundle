@@ -27,6 +27,7 @@ class WTFCartExtension extends Extension
         $loader->load('services.xml');
 
         $classItem = $config['item_class'];
+        $classUser = $config['user_class'];
         $collector = DoctrineCollector::getInstance();
 
         $collector->addAssociation("WTF\CartBundle\Entity\CartItem", 'mapManyToOne', array(
@@ -37,6 +38,17 @@ class WTFCartExtension extends Extension
             ),
             'orphanRemoval' => false,
         ));
+
+
+        $collector->addAssociation("WTF\CartBundle\Entity\Cart", 'mapManyToOne', array(
+            'fieldName'     => 'user',
+            'targetEntity'  => $classUser,
+            'cascade'       => array(
+                'persist',
+            ),
+            'orphanRemoval' => false,
+        ));
+
 
         $container->setParameter("wtf_cart.item_class", $classItem);
     }

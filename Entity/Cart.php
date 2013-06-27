@@ -49,6 +49,8 @@ class Cart
      */
     protected $cartitems;
 
+    protected $user;
+
 
 
     public function __construct()
@@ -197,5 +199,23 @@ class Cart
 
         return json_encode($result);
     }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
 
 }
