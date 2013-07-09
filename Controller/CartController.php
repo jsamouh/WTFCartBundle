@@ -54,8 +54,38 @@ class CartController extends Controller
         return $this->render("WTFCartBundle:Cart:list_item_summary.html.twig", array('cart' => $this->getCart()));
     }
 
+    /**
+     * @Route("/cart/update-quantity.html/{itemId}/{quantity}", name="wtf_cart_update_quantity")
+     */
+    public function updateItemCartQuantityAction($itemId, $quantity = 0)
+    {
+        if ($quantity <= 0)
+        {
+            $this->get("wtf_cart.manager")->removeItem($itemId);
+        }
+        else
+        {
+            $this->get("wtf_cart.manager")->setItemQuantity($itemId, $quantity);
+        }
 
-    private function getCart()
+        $cart = $this->getCart();
+
+        return $this->render("WTFCartBundle:Cart:mycart.html.twig", array('cart' => $cart));
+    }
+
+
+    /**
+     * @Route("/cart/mycart.html", name="wtf_cart_my_cart")
+     */
+    public function myCartAction()
+    {
+        $cart = $this->getCart();
+
+        return $this->render("WTFCartBundle:Cart:mycart.html.twig", array('cart' => $cart));
+    }
+
+
+    protected function getCart()
     {
         $cart = $this->get("wtf_cart.manager")->getCart();
 

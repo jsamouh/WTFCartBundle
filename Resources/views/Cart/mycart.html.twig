@@ -1,0 +1,25 @@
+
+{% block my_cart %}
+    <h1>Your Cart</h1>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+    {% for item in cart.items %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>
+                {{ cart.getCartItemByItem(item).quantity }}
+                <a href="{{ path('wtf_cart_update_quantity', {'itemId' : item.id, 'quantity': (cart.getCartItemByItem(item).quantity + 1)}) }}">+</a>
+                <a href="{{ path('wtf_cart_update_quantity', {'itemId' : item.id, 'quantity': (cart.getCartItemByItem(item).quantity - 1)}) }}">-</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <p>
+        <a href="">Order</a>
+    </p>
+
+{% endblock %}

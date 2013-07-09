@@ -1,9 +1,7 @@
-{% block wtf_cart %}
-    You Have <span class="js-cart-quantity">{{ cart.getTotalQuantity() }}</span> in your Cart
+    You Have <span class="js-cart-quantity">{{ cart.getTotalQuantity() }}</span> item(s) in your <a href="{{ path('wtf_cart_my_cart') }}">Cart</a>
     <div class="wtf-cart-list">
         {% include "WTFCartBundle:Cart:list_item_summary.html.twig" with {'cart': cart} %}
     </div>
-{% endblock %}
 
 
 <script type="text/javascript">

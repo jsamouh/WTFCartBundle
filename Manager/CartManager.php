@@ -44,7 +44,16 @@ class CartManager
         {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart)
+            {
+                if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY'))
+                {
+                    $cart->setUser($this->securityContext->getToken()->getUser());
+                    $this->em->persist($cart);
+                    $this->em->flush();
+                }
+
                 return $cart;
+            }
         }
         $cart = new Cart();
         if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY'))
@@ -68,6 +77,31 @@ class CartManager
         {
             $cartItem = $cart->getCartItemByItem($item);
             $cartItem->setQuantity($cartItem->getQuantity() + $quantity);
+            $this->em->persist($cartItem);
+            $this->em->flush();
+            return true;
+        }
+
+        $cartItem = new CartItem();
+        $cartItem->setCart($cart);
+        $cartItem->setItem($item);
+        $cartItem->setQuantity($quantity);
+        $cart->addCartItem($cartItem);
+        $this->em->persist($cartItem);
+        $this->em->persist($cart);
+        $this->em->flush();
+        return true;
+    }
+
+    public function setItemQuantity($itemId, $quantity = 1)
+    {
+        $cart = $this->loadCart();
+        $item = $this->getItemById($itemId);
+
+        if ($cart->hasItem($item))
+        {
+            $cartItem = $cart->getCartItemByItem($item);
+            $cartItem->setQuantity($quantity);
             $this->em->persist($cartItem);
             $this->em->flush();
             return true;
