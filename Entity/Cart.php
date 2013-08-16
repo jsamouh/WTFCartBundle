@@ -45,7 +45,7 @@ class Cart
      * Cart
      *
      * @var CartItem
-     * @ORM\OneToMany(targetEntity="CartItem", mappedBy="cart")
+     * @ORM\OneToMany(targetEntity="CartItem", mappedBy="cart", mappedBy="cart")
      */
     protected $cartitems;
 
