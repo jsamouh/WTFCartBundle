@@ -32,7 +32,7 @@ class CartItem
      * Cart
      *
      * @var Cart
-     * @ORM\ManyToOne(targetEntity="Cart", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Cart", cascade={"persist"}, inversedBy="cartitems")
      */
     protected $cart;
 
