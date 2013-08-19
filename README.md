@@ -56,7 +56,7 @@ Now add the config.yml the bundle configuration
 
 wtf_cart:
     item_class: App\ProductBundle\Entity\Product (put your Product entity)
-
+    user_class: WTF\UserBundle\Entity\User (put your User entity)
 ```
 
 Update the database and deploy assets web
