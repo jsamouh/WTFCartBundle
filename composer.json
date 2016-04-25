@@ -19,9 +19,9 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",	
-	    "symfony/framework-bundle": "2.*",
+	    "symfony/framework-bundle": "2.3.*",
         "gedmo/doctrine-extensions": "2.3.*",
-        "sonata-project/easy-extends-bundle": "2.1.*@dev"
+        "sonata-project/easy-extends-bundle": "2.1.9"
     },
     "autoload": {
         "psr-0": { "WTF\\CartBundle\\": "" }

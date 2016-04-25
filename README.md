@@ -45,7 +45,8 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new \WTF\CartBundle\WTFCartBundle(),
+        new WTF\CartBundle\WTFCartBundle(),
+        new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
     );
 }
 ```
