@@ -7,7 +7,6 @@ Simple:
 - You want to add and delete products in a ecommerce Cart
 - You want to have a simple block which displays products in a cart
 - You want cart entities managment
-
 This WTF Bundle is done for you!
 
 ### Symfony 2.3.* Compatible
